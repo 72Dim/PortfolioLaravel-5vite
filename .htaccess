@@ -1,0 +1,126 @@
+# https://httpd.apache.org
+# https://httpd.apache.org/docs/current/mod/directives.html#O
+
+        # Директивы
+# Установка default кодировки сервера
+    # Windows-1251, utf-8, ....
+    # AddDefaultCharset Win-1251
+AddDefaultCharset utf-8
+
+# Показывать список каталог(а-гов)
+    # (+) разрешить, (-) запретить
+Options +Indexes
+# стилизация списка каталога
+    # IndexOptions FancyIndexing
+IndexOptions FancyIndexing ScanHTMLTitles
+
+# -------------- Для проекта на Laravel -----------------------------------------
+    # Директива включает или отключает механизм перезаписи
+    # во время выполнения
+    # Используйте эту директиву для отключения правил в
+    # определенном контексте вместо того, чтобы комментировать
+    # все RewriteRule директивы.
+    # RewriteEngine on
+
+    # Handle Authorization Header
+    # Обработка заголовка авторизации
+    # Redirect Trailing Slashes If Not A Folder...
+    # Перенаправление конечных слешей, если не папка...
+    # Send Requests To Front Controller...
+    # Отправка запросов на фронт-контроллер...
+
+    # Переписать условие
+    # Документация по регулярным выражениям Perl https://perldoc.perl.org/perlre
+    # Если вы хотите выполнить сопоставление с именем хоста, портом
+    # или строкой запроса, используйте:
+    # RewriteCond с переменными %{HTTP_HOST}, %{SERVER_PORT}
+    # или %{QUERY_STRING} соответственно.
+    # RewriteCond %{REQUEST_URL} !^public
+    #RewriteCond %{REQUEST_FILENAME} !-d
+    #RewriteCond %{REQUEST_FILENAME} !-f
+
+    # Переписать правило. Адрес в браузере физически не меняется
+    #RewriteRule ^$ public/index.php [L]
+    # RewriteRule ^ public/index.php [END]
+    # Где [last|L|END]- Немедленно остановите процесс перезаписи и не применяйте больше никаких
+    # правил. Особое внимание обратите на предостережения для контекста каталога
+    # и .htaccess (см. также флаг END).
+
+    #RewriteRule ^((?!public/).*)$ public/$1 [L,NC]
+    #RewriteRule ^(.*)/$ /$1 [L,R=301]
+    #RewriteRule ^ index.php [L]
+    # может так
+    #RewriteEngine Onnn
+    #RewriteRule ^ (. *) $ Public/$ 1 [L]n
+    #<IfModule mod_rewrite.c>
+        #RewriteEngine on
+        #RewriteCond %{REQUEST_URI} !^public
+        #RewriteRule ^(.*)$ public/$1 [L]
+    #</IfModule>
+
+    #RewriteEngine on
+    #RewriteCond %{REQUEST_URI} !^public
+    #RewriteRule ^(.*)$ public/$1 [L]
+RewriteEngine on
+RewriteCond %{REQUEST_URL} !^public
+RewriteRule ^ public/index.php [END]
+# -------------------- end Laravel ------------------------------------------------
+# --- Другие директивы
+    # Приметивное перенаправление
+    # используються только абсолютные адресса
+    # происходит физическая перезапись адресса в адресной строке
+    # возможные коды 301, 302, 303, 410.
+    # Redirect /index.html /public/index.php
+
+    # Перенаправление c использованием регулярного выражения
+    # RedirectMatch 301 .+\.html$ /public/index.php
+
+    # RedirectMatch 301 .+\.txt$ /CheeseInMousetrap.png
+    # RedirectMatch (.+\.txt)$ /index.php?file=$1
+    # RedirectMatch .+?([^/]+\.(txt|png))$ /_index.php?file=$1
+    # RedirectMatch .+?([^/]+\.(txt|png))$ /_index.php?file=$1
+    # RedirectMatch .+?([^/]+\.(txt|png))$ /http://test.loc/example-app/resources/views/home.blade.php?file=$1
+
+    # Открытие файлов без указания расширения
+    # если есть файлы с одинаковыми именами но с разным расширением
+    # это может привести к неожиданным результатам
+    # (+) разрешить, (-) запретить
+    # Options +MultiViews
+
+    # Переопределение файла по умолчанию index.html на другой
+    # DirectoryIndex index.php
+    # DirectoryIndex CheeseInMousetrap.png
+
+    # Скрытие абсолютно всех файлов
+    # IndexIgnore *
+    # Скрытие всех файлов, определённых и с конкретным расширением из списка
+    # IndexIgnore *.txt *.rar *.zip CheeseInMousetrap.png
+
+    # Приметивное перенаправление
+    # используються только абсолютные адресса
+    # происходит физическая перезапись адресса в адресной строке
+    # возможные коды 301, 302, 303, 410.
+    # Redirect /index.html /index.php
+    # Redirect /index.html http://test.loc/index.php
+    # Redirect /example-app/resources/views/home.blade.php /index.html
+    # Redirect /index.html /example-app/resources/views/home.blade.php
+    # Redirect 301 /index.html http://test.loc/example-app/resources/views/home.blade.php
+    # Redirect /index.html https://www.php.net/manual/ru/langref.php
+
+    # Перенаправление c использованием регулярного выражения
+    # RedirectMatch 301 .+\.txt$ /example-app/resources/views/home.blade.php
+    # RedirectMatch 301 .+\.txt$ /CheeseInMousetrap.png
+    # RedirectMatch (.+\.txt)$ /index.php?file=$1
+    # RedirectMatch .+?([^/]+\.(txt|png))$ /_index.php?file=$1
+    # RedirectMatch .+?([^/]+\.(txt|png))$ /_index.php?file=$1
+    # RedirectMatch .+?([^/]+\.(txt|png))$ /http://test.loc/example-app/resources/views/home.blade.php?file=$1
+# --- конец другие директивы
+
+# Чтение php кода в HTML и JS файлах
+# в файле .html - php читается, а в js файле не читается, а должен.
+RemoveHandler .html .htm .js
+AddType application/x-httpd-php .php .htm .js .html .phtml
+
+# Закрываем доступ к папке через браузер
+# файл .htaccess находится в example-app,
+# а дериктива Deny from all запрещает доступ к нему.
