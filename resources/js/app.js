@@ -1,19 +1,14 @@
 // import './bootstrap';
-// Абсолютный URL путь, например, /foo/
-// Полный URL, например, https://foo.com/
-// Пустая строка или ./ (для embedded deployment)
-// import './node_modules/jquery/dist/jquery.js';
-import $ from 'jquery';         // работает
-window.$ = window.jQuery = $;   // работает
-// import jQuery from 'jquery'; // работает
-// window.$ = jQuery;           // работает
+import $ from 'jquery';         // works
+window.$ = window.jQuery = $;   // works
+// import jQuery from 'jquery'; // works
+// window.$ = jQuery;           // works
 
-
+// function for tests file
 read_env_variables();
 only_js();
 only_jQuery();
 function read_env_variables() {
-    // var nameAplication = import.meta.env.VITE_APP_NAME;
     console.log('Key values ​​from file .env');
     console.log(import.meta.env.VITE_APP_NAME);
     console.log(import.meta.env.VITE_EXAMPLE);
