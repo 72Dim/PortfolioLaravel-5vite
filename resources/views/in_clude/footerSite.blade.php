@@ -75,24 +75,6 @@
                                  </svg>
                               </a>
                            </li>
-                           {{-- 
-                              <li class="socials__list-item">
-                                 <a target="_blank" class="socials__link socials__link--instagram" href="" title="Instagram" aria-label="Instagram">
-                                    <svg aria-hidden="true">
-                                       <use href="#icon-instagram">
-                                       </use>
-                                    </svg>
-                                 </a>
-                              </li>
-                              <li class="socials__list-item">
-                                 <a target="_blank" class="socials__link socials__link--viber" href="" title="Viber" aria-label="Viber">
-                                    <svg aria-hidden="true">
-                                       <use href="#icon-viber">
-                                       </use>
-                                    </svg>
-                                 </a>
-                              </li>
-                           --}}
                            <li class="socials__list-item">
                               <a target="_blank" class="socials__link socials__link--telegram" href="#" title="Telegram" aria-label="Telegram">
                                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-telegram" viewBox="0 0 16 16">

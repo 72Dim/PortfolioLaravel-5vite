@@ -13,13 +13,6 @@
                             </svg>
                         </button>
                     </kd-mobile-user-menu>
-                    {{-- <a class="header__logo" href="/">
-                        @if ( 'categories' == $nameContent || 'products'   == $nameContent )
-                            <img src="{{ $brandImage ?? '' }}" alt="Name brand">
-                        @else
-                            <img src="{{ $nameBranch ?? '' }}" alt="Name git branch">
-                        @endif
-                    </a> --}}
                     <a href="/"
                         class="header__logo"
                         style="width: 260px">

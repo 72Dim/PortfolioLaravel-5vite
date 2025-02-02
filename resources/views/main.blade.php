@@ -1,36 +1,6 @@
 @extends('layouts.base')
-
 @section('title', 'Main page')
-{{------------------------ картинку показует ----------------------}}
 @section('linkIcon', $siteFavicon ?? '')
-{{------------------ the end картинку показует ------------------------}}
-
-{{-- ------------- Подключаем скрипиты в стек @stack('scripts') -------------}}
-   {{-- @if ( 'login' == $modalDialog || 'register' == $modalDialog || 'cart' == $modalDialog )
-      @push('scripts') --}}
-         {{-- @include('in_clude.scriptForModal') --}}
-      {{-- @endpush
-   @endif --}}
-
-   {{-- @auth
-      @if ( 'categories' == $nameContent )
-         @push('scripts') --}}
-            {{-- @include('in_clude.scriptForPagination') --}}
-         {{-- @endpush
-      @elseif ( 'products' == $nameContent )
-         @push('scripts') --}}
-            {{-- @include('in_clude.scriptForProducts') --}}
-         {{-- @endpush
-         @push('scripts') --}}
-            {{-- @include('in_clude.scriptForPagination') --}}
-         {{-- @endpush
-      @endif --}}
-{{--
-      @push('scripts') --}}
-         {{-- @include('in_clude.scriptForCart') --}}
-      {{-- @endpush
-   @endauth --}}
-{{-- -------------The end Подключения скрипитов в стек @stack('scripts') -------------}}
 
 @section('bodyHeader')
    <body
@@ -41,7 +11,7 @@
         data-nameContent = "{{ $nameContent ?? '' }}"
         data-categName = "{{ $categName ?? '' }}"
         data-categId = "{{ $categId ?? '' }}"
-        data-allCategories = "{{ $allCategories ?? '' }}"
+        {{-- data-allCategories = "{{ $allCategories ?? '' }}" --}}
         >
         <!-------------------------- Modal блок из бутстрап и розетки ------------------------------------>
         <div id="modal_backdrop" class="modal-backdrop fade"></div>
@@ -63,7 +33,6 @@
         <!-------------------------- The end modal блок из бутстрап и розетки ------------------------------>
         <div class="container-fluid">
             <div class="wrapper">
-
             @component('in_clude.banerHeader')
                 @slot('framework')
                     <h5>

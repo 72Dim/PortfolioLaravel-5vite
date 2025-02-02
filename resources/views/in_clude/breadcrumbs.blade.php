@@ -2,7 +2,9 @@
    <kd-breadcrumbs>
       <ul class="breadcrumbs">
          <li class="breadcrumbs__item breadcrumbs__item--home">
-            <a class="breadcrumbs__link" title="Интернет магазин" href="{{ route('main.first_start') }}">
+            <a  class="breadcrumbs__link"
+                href="{{ route('main.first_start') }}"
+                title="Интернет магазин">
                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                   width="16" height="16" fill="currentColor"
                   class="bi bi-house breadcrumbs__icon-home"
@@ -20,11 +22,12 @@
          </li>
          @if ( $nameContent == 'products' || $nameContent == 'authenticated' )
             <li class="breadcrumbs__item breadcrumbs__item--last">
-               <a class="breadcrumbs__link" href="{{ route('home.show.categories') }}">
-                  <span style="margin-left: 8px;">
-                     Все категории товаров
-                  </span>
-               </a>
+                <a class="breadcrumbs__link"
+                    href="{{ route('home.show.categories') }}">
+                    <span style="margin-left: 8px;">
+                        Все категории товаров
+                    </span>
+                </a>
                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                   width="16" height="16" fill="currentColor"
                   class="bi bi-chevron-right breadcrumbs__icon-chevron"

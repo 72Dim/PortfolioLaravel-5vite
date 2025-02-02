@@ -2,7 +2,6 @@
     <div class="header-actions__component">
         <a class="header__button"
             href={{ route('login') }}>
-            {{-- href="/login"> --}}
             Login
         </a>
     </div>
@@ -15,8 +14,6 @@
         <a class="header__button"
             title="Зарегистрироваться"
             href={{ route('register') }}>
-            {{-- href={{ url('/register') }}> --}}
-            {{-- href="/register"> --}}
             Register
         </a>
     </div>
