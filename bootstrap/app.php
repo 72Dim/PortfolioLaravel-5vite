@@ -3,6 +3,7 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use \App\Http\Middleware\MiddleResponseTest;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -11,7 +12,14 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        // $middleware->web(append: [
+        //     guest::class, // php artisan make:middleware MiddleResponseTest
+        // ]);
+        $middleware->alias([
+             //* добавлен для изучения Middlewar
+            'middle.response.test' => MiddleResponseTest::class,
+        ])
+        ->append(MiddleResponseTest::class);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
